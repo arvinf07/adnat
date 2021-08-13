@@ -22,13 +22,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
+    <%= form.label :password %>
+    (6 Characters minimum)
+    <br>
+    <%= form.text_field :password %>
   </div>
 
   <div class="field">
-    <%= form.label :organization_id %>
-    <%= form.number_field :organization_id %>
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation %>
   </div>
 
   <div class="actions">
