@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/login', to: 'sessions#login'
+  
   resources :shifts
   resources :users
   resources :organizations
