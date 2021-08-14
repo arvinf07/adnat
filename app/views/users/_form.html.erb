@@ -25,12 +25,12 @@
     <%= form.label :password %>
     (6 Characters minimum)
     <br>
-    <%= form.text_field :password %>
+    <%= form.text_field :password, type: 'password' %>
   </div>
 
   <div class="field">
     <%= form.label :password_confirmation %>
-    <%= form.text_field :password_confirmation %>
+    <%= form.text_field :password_confirmation, type: 'password' %>
   </div>
 
   <div class="actions">

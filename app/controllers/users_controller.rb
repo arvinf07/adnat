@@ -26,9 +26,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to organizations_path
     else
-      redirect_to organizations_route
+      render 'new'
     end
     
   end
@@ -63,6 +63,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email_address, :password_digest, :organization_id)
+      params.require(:user).permit(:name, :email_address, :password, :password_confirmation,:organization_id)
     end
 end
