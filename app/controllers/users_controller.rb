@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    set_user
   end
 
   # GET /users/new
@@ -63,6 +62,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email_address, :password, :password_confirmation,:organization_id)
+      params.require(:user).permit(:name, :email_address, :password, :password_confirmation, :organization_id)
     end
 end
