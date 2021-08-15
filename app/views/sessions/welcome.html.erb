@@ -1,5 +1,11 @@
 <h1>Login</h1>
 
+<% if @errors %>
+    <div id="error_explanation">
+      <h2><%= @errors %></h2>
+    </div>
+<% end %>
+
 <%= form_tag("/signin", :method => "post") do %>
   <%= label_tag :email_address, nil %><br>
   <%= text_field_tag :email_address, "" %><br><br>
