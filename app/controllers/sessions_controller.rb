@@ -1,11 +1,13 @@
 class SessionsController < ApplicationController
   skip_before_action :redirect_if_not_logged_in
-  # before_action :redirect_if_logged_in, except: [:logout]
+  # before_action :redirect_if_unauthorized, except: [:logout]
 
   def welcome 
+    redirect_if_unauthorized
   end
 
   def signin
+    redirect_if_unauthorized
     if @user = User.find_by_email_address(params[:email_address])&.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to organizations_path

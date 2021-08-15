@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :redirect_if_not_logged_in
+  before_action :redirect_if_unauthorized
   helper_method :current_user, :logged_in?
   
   private
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     redirect_to '/' if !logged_in?
   end
 
-  def redirect_if_logged_in
+  def redirect_if_unauthorized
     if(logged_in? && current_user.organization_id)
       redirect_to organization_path(@user.organization_id)
     else
