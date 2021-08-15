@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations or /organizations.json
   def index
-    redirect_if_logged_in
+    redirect_if_unauthorized
     @organizations = Organization.all
   end
 

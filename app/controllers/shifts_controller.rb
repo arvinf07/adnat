@@ -3,6 +3,7 @@ class ShiftsController < ApplicationController
 
   # GET /shifts or /shifts.json
   def index
+    redirect_if_unauthorized
     @shifts = current_user.organization.shifts
   end
 

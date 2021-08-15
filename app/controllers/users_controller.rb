@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   # before_action :redirect_if_unauthorized, only: %i[ new create ]
   skip_before_action :redirect_if_not_logged_in
 
+  def leave
+    current_user.update(organization_id: nil)
+  end
+
   # GET /users or /users.json
   def index
     @users = User.all

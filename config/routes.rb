@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/', to: 'sessions#welcome', as: 'welcome'
   post '/signin', to: 'sessions#signin', as: 'signin'
   delete '/logout', to: 'sessions#logout', as: 'logout'
+  patch '/leave', to: 'users#leave', as: 'leave_organization'
   resources :shifts
   resources :users
   resources :organizations
