@@ -22,16 +22,14 @@ class OrganizationsController < ApplicationController
   # POST /organizations or /organizations.json
   def create
     @organization = Organization.new(organization_params)
-
-    respond_to do |format|
-      if @organization.save
-        format.html { redirect_to @organization, notice: "Organization was successfully created." }
-        format.json { render :show, status: :created, location: @organization }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
+    
+    if @organization.save
+      current_user.update(organization_id: @organization.id)
+      redirect_to @organization, notice: "Organization was successfully created and joined."
+    else
+      render 'new'
     end
+
   end
 
   # PATCH/PUT /organizations/1 or /organizations/1.json
