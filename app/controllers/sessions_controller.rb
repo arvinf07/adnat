@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       redirect_to organizations_path
     else
       @errors = "The password and/or email are incorrect"
-      render 'welcome'
+      render 'login'
     end
   end
 

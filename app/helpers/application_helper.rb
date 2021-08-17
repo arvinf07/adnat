@@ -1,10 +1,8 @@
 module ApplicationHelper
   
   def dispaly_user
-    content_tag :p do 
-      "Logged in as: #{current_user.name}. "  
-      link_to 'Logout', logout_path, method: 'delete' 
-    end
+    logout_link = link_to 'Logout', logout_path, method: 'delete' 
+    content_tag(:p, "Logged in as: #{current_user.name}. ") + logout_link 
   end
   
 end

@@ -13,7 +13,7 @@
   <body>
     <%= link_to 'Adnat', '/' %>
     <br>
-    <%= dispaly_user if logged_in? %>
+    <%= render :partial => '/layouts/display_user' if logged_in? %>
     <%= yield %>
   </body>
 </html>
