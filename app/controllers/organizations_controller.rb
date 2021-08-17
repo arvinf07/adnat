@@ -3,10 +3,13 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations or /organizations.json
   def index
-    redirect_if_unauthorized
-    @organizations = Organization.all
+    if @organization = current_user.organization
+      byebug
+      render 'show'
+    else
+      @organizations = Organization.all 
+    end
   end
-
   # GET /organizations/1 or /organizations/1.json
   def show
     

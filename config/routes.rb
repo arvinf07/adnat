@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#signin', as: 'signin'
   delete '/logout', to: 'sessions#logout', as: 'logout'
   patch '/leave', to: 'users#leave', as: 'leave_organization'
+  patch '/join/:id', to: 'users#join', as: 'join_organization'
   resources :shifts
   resources :users
   resources :organizations

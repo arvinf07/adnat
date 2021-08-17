@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   # before_action :redirect_if_unauthorized, only: %i[ new create ]
   skip_before_action :redirect_if_not_logged_in
 
+  def join
+    byebug
+    current_user.update(organization_id: params[:id])
+    redirect_to organizations_path
+  end
+
   def leave
     current_user.update(organization_id: nil)
     redirect_to organizations_path
