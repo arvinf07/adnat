@@ -8,8 +8,9 @@ class Shift < ApplicationRecord
     shift_length - (self.break_length.to_f / 60)
   end
 
-  def shift_cost
-
+  def cost(rate)
+    cost = self.hours_worked * rate
+    (cost*100).ceil/100.0
   end
 
 end

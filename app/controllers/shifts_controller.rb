@@ -3,7 +3,8 @@ class ShiftsController < ApplicationController
 
   # GET /shifts or /shifts.json
   def index
-    @shifts = current_user.organization.shifts.flatten
+    @organization = current_user.organization
+    @shifts = @organization.shifts.flatten
   end
 
   # GET /shifts/1 or /shifts/1.json
@@ -21,30 +22,24 @@ class ShiftsController < ApplicationController
 
   # POST /shifts or /shifts.json
   def create
-    @shift = Shift.new(shift_params)
+    @shift = current_user.shifts.build(shift_params)
 
-    respond_to do |format|
-      if @shift.save
-        format.html { redirect_to @shift, notice: "Shift was successfully created." }
-        format.json { render :show, status: :created, location: @shift }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @shift.errors, status: :unprocessable_entity }
-      end
+    if @shift.save
+      redirect_to shifts_path, notice: "Shift was successfully created." 
+    else
+      render 'new'
     end
+
   end
 
   # PATCH/PUT /shifts/1 or /shifts/1.json
   def update
-    respond_to do |format|
       if @shift.update(shift_params)
-        format.html { redirect_to @shift, notice: "Shift was successfully updated." }
-        format.json { render :show, status: :ok, location: @shift }
+        redirect_to shifts_path, notice: "Shift was successfully updated." 
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @shift.errors, status: :unprocessable_entity }
+        render 'edit'
       end
-    end
+
   end
 
   # DELETE /shifts/1 or /shifts/1.json

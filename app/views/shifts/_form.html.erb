@@ -11,19 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
+  # Refactor so that hour appears as 1pm or am
 
   <div class="field">
     <%= form.label :start %>
-    <%= form.datetime_select :start %>
+    <%= form.datetime_select :start, ampm: true %>
   </div>
 
   <div class="field">
     <%= form.label :finish %>
-    <%= form.datetime_select :finish %>
+    <%= form.datetime_select :finish, ampm: true %>
   </div>
 
   <div class="field">

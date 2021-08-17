@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= current_user.organization.name %></h1>
+<h1><%= @organization.name %></h1>
 <h2>Shifts</h2>
 
 <table>
@@ -13,7 +13,6 @@
       <th>Break length (minutes)</th>
       <th>Hours Worked</th>
       <th>Shift Cost</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -26,9 +25,10 @@
         <td><%= shift.finish.strftime('%I:%M%p') %></td>
         <td><%= shift.break_length %></td>
         <td><%= shift.hours_worked %></td>
-        <td><%=  %></td>
+        <td>$<%= shift.cost(@organization.hourly_rate) %></td>
       </tr>
     <% end %>
+    
   </tbody>
 </table>
 

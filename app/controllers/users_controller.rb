@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def leave
     current_user.update(organization_id: nil)
+    redirect_to organizations_path
   end
 
   # GET /users or /users.json
