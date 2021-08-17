@@ -4,14 +4,15 @@ class ShiftsController < ApplicationController
   # GET /shifts or /shifts.json
   def index
     @organization = current_user.organization
-    @shifts = @organization.shifts.flatten
+    @shifts = sort_shifts(@organization.shifts.flatten)
   end
 
   # GET /shifts/1 or /shifts/1.json
   def show
   end
 
-  #  VIEW SHIFTS ONLY IF THE CURRENT USER BELONGS TO THE ORGANIZATION
+  #  RESET PASSWORD FUNCTIONALITY
+  #  CHANGE LINK COLOR TO BLUE
 
   # GET /shifts/new
   def new
@@ -65,4 +66,10 @@ class ShiftsController < ApplicationController
     def shift_params
       params.require(:shift).permit(:user_id, :start, :finish, :break_length)
     end
+
+    # Sort shifts in ASC order
+    def sort_shifts(shifts)
+      shifts.sort { |a, b| a.start <=> b.start }
+    end
+
 end
