@@ -8,8 +8,10 @@ class UsersController < ApplicationController
     redirect_to organizations_path
   end
 
+  # do shifts delete
   def leave
     current_user.update(organization_id: nil)
+    @user.shifts.destroy_all
     redirect_to organizations_path
   end
 

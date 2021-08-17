@@ -11,11 +11,8 @@ class ShiftsController < ApplicationController
   def show
   end
 
-  # DELETE SHIFTS BELOGNING TO USER THAT LEAVES
-    #  SWITCH THE LEAVE ROUTE TO SHIFTS#DELETE
-
   #  VIEW SHIFTS ONLY IF THE CURRENT USER BELONGS TO THE ORGANIZATION
-  
+
   # GET /shifts/new
   def new
     @shift = Shift.new
