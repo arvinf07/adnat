@@ -8,9 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_not_logged_in
-    redirect_to '/' if !logged_in?
+    redirect_to '/login' if !logged_in?
   end
 
+  # should this method even exist
   def redirect_if_unauthorized
     if current_user.organization_id == params[:id]
       redirect_to organizations_path

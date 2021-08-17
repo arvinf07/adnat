@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   skip_before_action :redirect_if_not_logged_in
 
   def join
-    byebug
     current_user.update(organization_id: params[:id])
     redirect_to organizations_path
   end
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    redirect_if_unauthorized
+    redirect_to '/' if logged_in?
     @user = User.new
   end
 

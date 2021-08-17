@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/', to: 'sessions#welcome', as: 'welcome'
-  post '/signin', to: 'sessions#signin', as: 'signin'
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#logout', as: 'logout'
   patch '/leave', to: 'users#leave', as: 'leave_organization'
   patch '/join/:id', to: 'users#join', as: 'join_organization'

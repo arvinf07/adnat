@@ -10,11 +10,14 @@ class ShiftsController < ApplicationController
   # GET /shifts/1 or /shifts/1.json
   def show
   end
+#  FIX SHIFTS SO THAT THEY ONLY SHOW FOR THE COMPANY THEY WERE CREATED FOR  
 #  VIEW SHIFTS ONLY IF THE CURRENT USER BELONGS TO THE ORGANIZATION
   # GET /shifts/new
   def new
     @shift = Shift.new
   end
+ 
+
 
   # GET /shifts/1/edit
   def edit

@@ -4,7 +4,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations or /organizations.json
   def index
     if @organization = current_user.organization
-      byebug
       render 'show'
     else
       @organizations = Organization.all 
