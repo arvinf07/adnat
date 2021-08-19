@@ -3,16 +3,23 @@ class ShiftsController < ApplicationController
 
   # GET /shifts or /shifts.json
   def index
-    @organization = current_user.organization
+    # move this to show_route and pass in the id of the org to check if user is qualified to view shifts
+    # AND just make the link invisible
+    redirect_to '/' if current_user
+    @organization = @user.organization
     @shifts = sort_shifts(@organization.shifts.flatten)
   end
 
   # GET /shifts/1 or /shifts/1.json
   def show
   end
-
+ 
   #  RESET PASSWORD FUNCTIONALITY
+    # CREATE PASSWORDCONTROLLER AND ACTIONMAILER
   #  CHANGE LINK COLOR TO BLUE
+  # ADD VALIDATIONS FOR FULL NAME
+  #  ADD DATA VALIDATIONS
+  #  ADD DATABASE CONSTRAINTS
 
   # GET /shifts/new
   def new
