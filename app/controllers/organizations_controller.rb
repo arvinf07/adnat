@@ -1,19 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: %i[ show edit update destroy ]
 
-  # GET /organizations or /organizations.json
-  def index
-    if @organization = current_user.organization
-      render 'show'
-    else
-      @organizations = Organization.all 
-    end
-  end
-  # GET /organizations/1 or /organizations/1.json
-  def show
-    
-  end
-
   # GET /organizations/new
   def new
     @organization = Organization.new

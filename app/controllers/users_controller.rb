@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def join
     current_user.update(organization_id: params[:id])
-    redirect_to organizations_path
+    redirect_to '/'
   end
 
   def leave
