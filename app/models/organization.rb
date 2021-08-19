@@ -1,9 +1,10 @@
 class Organization < ApplicationRecord
   has_many :users
 
-  validates :email_address 
-    presence: true,
-    format: {without: regex}
+  validates :hourly_rate, 
+    presence: true, 
+    numericality: {greater_than: 0}
+  validates :name, presence: true, uniqueness: true
 
 
   def shifts

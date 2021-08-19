@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   patch '/leave', to: 'users#leave', as: 'leave_organization'
   patch '/join/:id', to: 'users#join', as: 'join_organization'
   resources :shifts
-  resources :users
+  resources :users, except: [:index]
   resources :organizations
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
