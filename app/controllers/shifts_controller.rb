@@ -12,10 +12,10 @@ class ShiftsController < ApplicationController
   def show
   end
  
-  # FIX VALIDATIONS FOR SHIFTS THAT END BEFORE START
   #  RESET PASSWORD FUNCTIONALITY
     # CREATE PASSWORDCONTROLLER AND ACTIONMAILER
-
+  # HANDLE INVALID ROUTES
+  
   # GET /shifts/new
   def new
     @shift = Shift.new

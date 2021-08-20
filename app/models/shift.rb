@@ -3,11 +3,13 @@ class Shift < ApplicationRecord
 
   validate :finish_cannot_be_before_start
   validates :start, presence: true
-  validates :finish, presence: true
   validates :break_length, 
     presence: true,
-    numericality: {greater_than: 0, only_integer: true}
+    numericality: {greater_than: -1, only_integer: true}
+  validates :finish, presence: true
 
+  # Default break length to 0 if left blank
+  after_initialize :init
 
   def hours_worked
     hours = self.finish.hour - self.start.hour
@@ -24,6 +26,10 @@ class Shift < ApplicationRecord
   private
   def round_to_100(num)
     (num*100).ceil/100.0
+  end
+
+  def init
+    self.break_length  ||= 0        
   end
 
   # To validate start and finish dates

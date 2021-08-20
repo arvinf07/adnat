@@ -12,19 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def login
-    
-  end
-
-  def create
     redirect_to '/' if logged_in?
-    
-    if @user = User.find_by_email_address(params[:email_address])&.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to organizations_path
-    else
-      @errors = "The password and/or email are incorrect"
-      render 'login'
-    end
   end
 
   def logout
@@ -32,4 +20,16 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
+  def create
+    redirect_to '/' if logged_in?
+
+    if @user = User.find_by_email_address(params[:email_address])&.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to '/'
+    else
+      @errors = "The password and/or email are incorrect"
+      render 'login'
+    end
+  end
+  
 end
