@@ -11,13 +11,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def login
+  def new
     redirect_to '/' if logged_in?
-  end
-
-  def logout
-    reset_session
-    redirect_to '/'
   end
 
   def create
@@ -31,5 +26,10 @@ class SessionsController < ApplicationController
       render 'login'
     end
   end
-  
+
+  def destroy
+    reset_session
+    redirect_to '/'
+  end
+
 end
