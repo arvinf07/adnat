@@ -1,24 +1,7 @@
-# README
+# Adnat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
+Adnat is an application which allow organizations to keep track of their employees and their shifts. For users it can be used to create shifts, join and edit organizations.
+ 
 * Configuration
+Run `bundle install` first, then `rails start` when all dependencies are installed.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
