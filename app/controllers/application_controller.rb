@@ -1,31 +1,21 @@
 class ApplicationController < ActionController::Base
   before_action :redirect_if_not_logged_in
   helper_method :current_user, :logged_in?
-  rescue_from ActiveRecord::RecordNotFound do |exception| 
+  rescue_from ActiveRecord::RecordNotFound do |_exception|
     redirect_to '/'
   end
-   
+
   private
+
   def logged_in?
     !!session[:user_id]
   end
 
   def redirect_if_not_logged_in
-    redirect_to '/login' if !logged_in?
-  end
-
-  # should this method even exist
-  def redirect_if_unauthorized
-    if current_user.organization_id == params[:id]
-      redirect_to organizations_path
-    else
-      redirect_to organizations_path
-    end
+    redirect_to '/login' unless logged_in?
   end
 
   def current_user
     @user ||= User.find_by_id(session[:user_id])
-    # User.find_by_id(session[:user_id])
   end
-
 end

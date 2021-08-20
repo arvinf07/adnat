@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
   skip_before_action :redirect_if_not_logged_in, except: [:welcome]
 
-  def welcome 
+  def welcome
     if @organization = current_user.organization
-      render :template => "organizations/show"
+      render template: 'organizations/show'
     else
-      @organizations = Organization.all 
-      render :template => "organizations/index"
+      @organizations = Organization.all
+      render template: 'organizations/index'
     end
   end
 
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/'
     else
-      @errors = "The password and/or email are incorrect"
+      @errors = 'The password and/or email are incorrect'
       render 'new'
     end
   end
@@ -30,5 +30,4 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to '/'
   end
-
 end

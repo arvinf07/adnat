@@ -10,31 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_195049) do
-
-  create_table "organizations", force: :cascade do |t|
-    t.string "name"
-    t.decimal "hourly_rate"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_210_810_195_049) do
+  create_table 'organizations', force: :cascade do |t|
+    t.string 'name'
+    t.decimal 'hourly_rate'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "shifts", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "start"
-    t.datetime "finish"
-    t.integer "break_length"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'shifts', force: :cascade do |t|
+    t.integer 'user_id'
+    t.datetime 'start'
+    t.datetime 'finish'
+    t.integer 'break_length'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email_address"
-    t.string "password_digest"
-    t.integer "organization_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'email_address'
+    t.string 'password_digest'
+    t.integer 'organization_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
-
 end
