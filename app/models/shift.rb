@@ -28,7 +28,9 @@ class Shift < ApplicationRecord
 
   # To validate start and finish dates
   def finish_cannot_be_before_start
-    errors.add(:base, "Your shift can't finish before is starts") if start < finish
+    if start.to_datetime > finish.to_datetime
+      errors.add(:base, "Your shift can't finish before it starts") 
+    end
   end
 
 end
