@@ -12,8 +12,6 @@ class ShiftsController < ApplicationController
   def show
   end
  
-  #  RESET PASSWORD FUNCTIONALITY
-    # CREATE PASSWORDCONTROLLER AND ACTIONMAILER
   # HANDLE INVALID ROUTES
   
   # GET /shifts/new
@@ -71,7 +69,7 @@ class ShiftsController < ApplicationController
 
     # Sort shifts in ASC order
     def sort_shifts(shifts)
-      shifts.sort { |a, b| a.start <=> b.start }
+      shifts.sort { |a, b| b.start <=> a.start }
     end
 
 end

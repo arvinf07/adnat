@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   skip_before_action :redirect_if_not_logged_in, except: [:welcome]
-  # before_action :redirect_if_unauthorized, except: [:logout]
 
   def welcome 
     if @organization = current_user.organization

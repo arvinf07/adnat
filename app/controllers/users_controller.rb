@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  # before_action :redirect_if_unauthorized, only: %i[ new create ]
   skip_before_action :redirect_if_not_logged_in
 
   def join
@@ -39,7 +38,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to organizations_path
+      redirect_to '/'
     else
       render 'new'
     end
