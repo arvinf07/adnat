@@ -55,4 +55,9 @@ class OrganizationsController < ApplicationController
     def organization_params
       params.require(:organization).permit(:name, :hourly_rate)
     end
+
+    # Sort shifts in ASC order
+    def sort_shifts(shifts)
+      shifts.sort { |a, b| a.start <=> b.start }
+    end
 end

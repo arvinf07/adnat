@@ -3,9 +3,7 @@ class ShiftsController < ApplicationController
 
   # GET /shifts or /shifts.json
   def index
-    # move this to show_route and pass in the id of the org to check if user is qualified to view shifts
-    # AND just make the link invisible
-    redirect_to '/' if current_user
+    redirect_to '/' unless current_user.organization_id
     @organization = @user.organization
     @shifts = sort_shifts(@organization.shifts.flatten)
   end

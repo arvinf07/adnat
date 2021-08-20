@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def leave
     current_user.update(organization_id: nil)
     @user.shifts.destroy_all
-    redirect_to organizations_path
+    redirect_to '/'
   end
 
   # GET /users or /users.json
