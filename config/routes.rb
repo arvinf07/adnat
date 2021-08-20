@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   patch '/leave', to: 'users#leave', as: 'leave_organization'
   patch '/join/:id', to: 'users#join', as: 'join_organization'
 
-  get '/password/reset', to: 'password_reset#new'
-  post '/password/reset', to: 'password_reset#create'
+  get '/password/reset', to: 'password_resets#new'
+  post '/password/reset', to: 'password_resets#create'
+  get '/password/reset/edit', to: 'password_resets#edit'
+  patch '/password/reset/edit', to: 'password_resets#update'
 
   resources :shifts
   resources :users, except: [:index]

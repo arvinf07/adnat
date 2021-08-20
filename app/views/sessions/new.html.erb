@@ -6,13 +6,17 @@
     </div>
 <% end %>
 
-<%= form_tag("/login", :method => "post") do %>
+<%= form_tag("/login") do %>
   <%= label_tag :email_address, nil %><br>
-  <%= text_field_tag :email_address, "" %><br><br>
+  <%= text_field_tag :email_address%><br><br>
+
   <%= label_tag :password, nil %><br>
-  <%= password_field_tag :password, "" %><br><br>
+  <%= password_field_tag :password %><br>
+  <%= link_to 'Forgot your password?', password_reset_path %>
+  <br><br>
+
   <%= submit_tag "Login" %>
 <%end%>
-<br>
 
+<br>
 <%= link_to 'Create an account', new_user_path %>
