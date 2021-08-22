@@ -10,11 +10,13 @@
   <%= @user.email_address %>
 </p>
 
+<%if @user.organization %>
+  <p>
+    <strong>Organization:</strong>
+    <%= @user.organization.name %>
+  </p>
+<%end%>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @user.organization.name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Change Password', password_path %> |
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

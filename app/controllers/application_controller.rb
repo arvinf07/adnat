@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_not_logged_in
-    redirect_to '/login' unless logged_in?
+    redirect_to '/login', alert: 'You must sign in first' unless logged_in?
   end
 
   def current_user
