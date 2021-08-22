@@ -11,3 +11,4 @@ class PasswordMailer < ApplicationMailer
     mail to: @user.email_address
   end
 end
+  
