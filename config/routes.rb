@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   patch '/leave', to: 'users#leave', as: 'leave_organization'
   patch '/join/:id', to: 'users#join', as: 'join_organization'
 
-  get '/password/edit', to: 'password#edit'
-  patch '/password/edit', to: 'password#update'
+  get '/password', to: 'passwords#edit'
+  patch '/password', to: 'passwords#update'
 
   get '/password/reset', to: 'password_resets#new'
   post '/password/reset', to: 'password_resets#create'
