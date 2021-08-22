@@ -1,7 +1,7 @@
 class Organization < ApplicationRecord
   has_many :users
   has_many :organization_shifts
-  has_many :shifts, through :organization_shifts
+  has_many :shifts, through: :organization_shifts
 
   validates :hourly_rate,
             presence: true,

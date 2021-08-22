@@ -1,7 +1,7 @@
 class Shift < ApplicationRecord
   belongs_to :user
   has_many :organization_shifts
-  has_many :organizations, through :organization_shifts
+  has_many :organizations, through: :organization_shifts
 
   validate :finish_cannot_be_before_start
   validates :start, presence: true

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_08_22_193147) do
 
-  create_table "organization_shifts_tables", force: :cascade do |t|
+  create_table "organization_shifts", force: :cascade do |t|
     t.integer "organization_id"
     t.integer "shift_id"
     t.datetime "departure_date"
