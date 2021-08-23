@@ -3,9 +3,11 @@ class ShiftsController < ApplicationController
 
   # GET /shifts or /shifts.json
   def index
-    redirect_to '/' unless current_user.organization_id
-    @organization = @user.organization
-    @shifts = sort_shifts(@organization.shifts.flatten)
+    if @organization = current_user.organization
+      @shifts = sort_shifts(@organization.shifts.flatten)
+    else
+      redirect_to '/'
+    end
   end
 
   # GET /shifts/new
@@ -21,7 +23,7 @@ class ShiftsController < ApplicationController
   # POST /shifts or /shifts.json
   def create
     @shift = current_user.shifts.build(shift_params)
-
+    byebug
     if @shift.save
       redirect_to shifts_path, notice: 'Shift was successfully created.'
     else
@@ -56,7 +58,9 @@ class ShiftsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def shift_params
-    params.require(:shift).permit(:user_id, :start, :finish, :break_length)
+    params
+    .require(:shift).permit(:user_id, :start, :finish, :break_length)
+    .merge(organization_id: current_user.organization_id)
   end
 
   def sort_shifts(shifts)
