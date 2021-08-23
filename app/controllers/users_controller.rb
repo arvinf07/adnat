@@ -9,14 +9,14 @@ class UsersController < ApplicationController
 
   def leave
     current_user.update(organization_id: nil)
-    @user.shifts.destroy_all
+    @user.shifts.each {|shift| shift.update(departure_date: DateTime.now)}
     redirect_to '/'
   end
 
   # GET /users/1 or /users/1.json
   def show
     
-  end
+  end 
 
   # GET /users/new
   def new

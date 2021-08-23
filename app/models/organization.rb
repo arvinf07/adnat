@@ -7,7 +7,12 @@ class Organization < ApplicationRecord
             numericality: { greater_than: 0 }
   validates :name, presence: true, uniqueness: true
 
-  def shifts
-    shifts = users.map { |user| user.shifts }
+  def valid_shifts
+    self.shifts.select {|shift| shift.departure_date.nil? }
   end
+
+  def old_shifts
+    self.shifts.select {|shift| shift.departure_date != nil }
+  end
+
 end

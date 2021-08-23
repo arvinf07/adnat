@@ -4,7 +4,7 @@ class ShiftsController < ApplicationController
   # GET /shifts or /shifts.json
   def index
     if @organization = current_user.organization
-      @shifts = sort_shifts(@organization.shifts.flatten)
+      @shifts = sort_shifts(@organization.valid_shifts)
     else
       redirect_to '/'
     end
@@ -23,7 +23,6 @@ class ShiftsController < ApplicationController
   # POST /shifts or /shifts.json
   def create
     @shift = current_user.shifts.build(shift_params)
-    byebug
     if @shift.save
       redirect_to shifts_path, notice: 'Shift was successfully created.'
     else
