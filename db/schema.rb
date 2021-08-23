@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_193147) do
-
-  create_table "organization_shifts", force: :cascade do |t|
-    t.integer "organization_id"
-    t.integer "shift_id"
-    t.datetime "departure_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_08_23_125839) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -34,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_08_22_193147) do
     t.integer "break_length"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "organization_id"
+    t.datetime "departure_date"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,8 +37,6 @@ ActiveRecord::Schema.define(version: 2021_08_22_193147) do
     t.integer "organization_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
   end
 
 end

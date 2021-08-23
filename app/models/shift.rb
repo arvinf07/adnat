@@ -1,9 +1,8 @@
 class Shift < ApplicationRecord
   belongs_to :user
-  has_many :organization_shifts
-  has_many :organizations, through: :organization_shifts
+  belongs_to :organization
 
-  validate :finish_cannot_be_before_start
+  validate :cannot_finish_before_start
   validates :start, presence: true
   validates :break_length,
             presence: true,
@@ -36,7 +35,7 @@ class Shift < ApplicationRecord
   end
 
   # To validate start and finish dates
-  def finish_cannot_be_before_start
+  def cannot_finish_before_start
     errors.add(:base, "Your shift can't finish before it starts") if start.to_datetime > finish.to_datetime
   end
 end
